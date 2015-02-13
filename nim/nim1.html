@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Nim test</title>
+	<link rel="Stylesheet" href="css/stylesheet.css">
+	  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,300,400">
+</head>
+
+<body>
+<section class="container">
+
+<h1>Game of Nim</h1>
+
+<h2>Rules of the Game:</h2>
+
+<ol>
+	<li>Choose a pile to pick from and hit the "Play" button as many times as you like to pick from that pile</li>
+	<li>After your turn, hit the "I'm done!" button for the computer's turn</li>
+	<li>Whoever picks up the last match loses!</li>
+</ol>
+<br>
+<input id="newgame" type="button" value="New Game?" onclick="newGame()" />
+
+
+<table>
+	<tr>
+		<td><p id="pile1">5</p></td>
+		<td><p id="pile2">5</p></td>
+		<td><p id="pile3">5</p></td>
+	</tr>
+	<tr>
+		<td><input id="playerturn1" type="button" value="Play" onclick="playerTurn(1)" 	/></td>
+		<td><input id="playerturn2" type="button" value="Play" onclick="playerTurn(2)" 	/></td>
+		<td><input id="playerturn3" type="button" value="Play" onclick="playerTurn(3)" 	/></td>
+	</tr>
+</table>
+
+<div class="center">
+<p id="computerInfo">Computer has not played a turn yet.</p>
+
+<input id="computerturn" type="button" value="I'm done!" onclick="computerTurn()" />
+</div>
+
+</section>
+
+ <script>
+
+var pile1 = Number(document.getElementById("pile1").innerHTML);
+var pile2 = Number(document.getElementById("pile2").innerHTML);
+var pile3 = Number(document.getElementById("pile3").innerHTML);
+var gameStack = [pile1,pile2,pile3];
+
+
+function playerTurn(number) {
+
+	// conditional statements to hide buttons not used on this go
+	if (number == 1) {
+		document.getElementById("playerturn2").style.visibility='hidden';
+		document.getElementById("playerturn3").style.visibility='hidden';
+	}
+	else if (number == 2){
+		document.getElementById("playerturn1").style.visibility='hidden';
+		document.getElementById("playerturn3").style.visibility='hidden';	
+	}
+	else {
+		document.getElementById("playerturn1").style.visibility='hidden';
+		document.getElementById("playerturn2").style.visibility='hidden';
+	}
+
+	// get the current pile score of the selected pile
+	currentPileScore = gameStack[number - 1];
+	console.log(currentPileScore);
+
+	// subtract 1 for this round
+	currentPileScore -= 1;
+
+	// conditional to prevent going past 0
+	if (currentPileScore == 0){
+		document.getElementById("playerturn" + number).style.visibility='hidden';
+	}
+
+	// update the game stack and the screen value
+	gameStack[number - 1] = currentPileScore;
+	document.getElementById("pile" + number).innerHTML = currentPileScore;
+
+	document.getElementById("computerInfo").innerHTML = "Player chose pile: " + number;
+
+	// conditional to declare the winner
+	if (sumArray(gameStack) == 0) {
+		declareWinner(0);
+	}
+
+	// console log for debugging
+	console.log(gameStack);
+}
+
+function randomPile() {
+	// returns a number 0, 1 or 2
+	var piles = [0,1,2];
+	var pile = piles[Math.floor(Math.random() * 3)];
+	
+	while (gameStack[pile] == 0 && sumArray(gameStack) != 0) {
+		pile = piles[Math.floor(Math.random() * 3)];	
+	}
+	
+	return pile;
+}
+
+function computerTurn() {
+	// ensure the computer turn button is showing
+	document.getElementById("computerturn").style.visibility='visible';
+
+	// computer chooses which pile to pick from
+	var computerPile = randomPile();
+	console.log("From pile: " + computerPile);
+
+	currentPileScore = gameStack[computerPile];
+	console.log("Current score: " + gameStack[computerPile]);
+
+	// computer chooses how many to pick
+	var computerChoice = (Math.random() * (currentPileScore) | 0) + 1;
+	console.log("Computer number: " + computerChoice);
+
+	// update the game stack
+	currentPileScore -= computerChoice;
+	gameStack[computerPile] = currentPileScore;
+
+	// update the score pile shown on screen
+	document.getElementById("pile" + (computerPile + 1)).innerHTML = currentPileScore;
+
+	// conditional to hide buttons if 0
+	for (var j = 1; j < 4; j++) {
+		if (gameStack[j - 1] == 0) {
+			document.getElementById("playerturn" + j).style.visibility='hidden';
+		}
+	}
+
+	if (sumArray(gameStack) == 0) {
+		declareWinner(1);
+	}
+
+	console.log(gameStack);
+
+	document.getElementById("computerInfo").innerHTML = "Computer picked pile: " + (computerPile + 1) + " and played: " + computerChoice;
+
+
+	// reshow the buttons for player's next turn
+	for (var i = 1; i < 4; i++) {
+		if (gameStack[i - 1] > 0) {
+			document.getElementById("playerturn" + i).style.visibility='visible';
+		}
+	}
+}
+
+function sumArray(array) {
+	var total = 0;
+	for (var i = 0; i < array.length; i++) {
+		total += array[i];
+	}
+	return total;
+}
+
+function newGame() {
+	for (var i = 1; i < 4; i++) {
+		gameStack[i - 1] = 5;
+		document.getElementById("pile" + i).innerHTML = 5;
+		document.getElementById("computerInfo").innerHTML = "Computer has not played a turn yet.";
+		document.getElementById("playerturn" + i).style.visibility='visible';
+		document.getElementById("computerturn").style.visibility='visible';
+		document.getElementById("computerInfo").style.visibility='visible';
+	}
+
+}
+
+function declareWinner(number) {
+	document.getElementById("computerturn").style.visibility='hidden';
+	document.getElementById("computerInfo").style.visibility='hidden';
+	
+	if (number == 1) {
+		alert("You win!");
+	}
+	else {
+		alert("Computer wins!");
+	}
+}
+
+function printScore() {
+	return gameStack;
+}
+
+
+</script>
+</body>
+</html>
