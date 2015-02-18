@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Nim test</title>
+	<link rel="Stylesheet" href="css/stylesheet2.css">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,300,400">
+</head>
+
+<body>
+
+<header class="header container">
+	<h3>Game of Nim</h3>
+	<p>1. Enter the starting size of the three piles in the space below, and then press "Begin Game"</p>
+</header>
+
+<section class="container">
+
+<table>
+	<tr>
+		<td><input type="number" id="pile0"></td>
+		<td><input type="number" id="pile1"></td>
+		<td><input type="number" id="pile2"></td>
+	</tr>
+</table>
+
+<div class="big_button">
+	<button class="big" onclick="populateStack()">Begin Game</button>
+</div>
+
+</section>
+
+<script>
+var pile1, pile2, pile3;
+
+function populateStack() {
+	for (var i = 0; i < 3; i++) {
+		localStorage.setItem('pile'+i, document.getElementById("pile" + i).value);
+		document.getElementById("pile" + i).style.visibility='hidden';
+	}
+	location.href='nim2_game.html';
+}
+
+</script>
+
+</body>
+</html>

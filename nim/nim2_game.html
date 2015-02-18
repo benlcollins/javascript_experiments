@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Nim test</title>
+	<link rel="Stylesheet" href="css/stylesheet2.css">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,300,400">
+</head>
+
+<body>
+
+<header class="header container">
+	<h3>Game of Nim</h3>
+	<p>2. Play Nim by picking up as many matches as you'd like from a pile. You may pick from only one pile per go however. Whoever is forced to pick up the final match loses!</p>
+</header>
+
+<section class="container center">
+
+<table>
+	<tr>
+		<td><p id="pile0">5</p></td>
+		<td><p id="pile1">5</p></td>
+		<td><p id="pile2">5</p></td>
+	</tr>
+</table>
+
+<div id="player_go" class="player_input">
+	<p>Select a pile to take from:
+	<select id="pile_select">
+	  	<option value="1">1</option>
+  		<option value="2">2</option>
+  		<option value="3">3</option>
+	</select>
+	and enter how many matches you would like to pick up:
+
+	<input type="number" id="amount_selected">
+
+	<button onclick="playerTurn()">Play</button></p>
+</div>
+
+<p>
+	<div id="computer_go" style="display: none;">Computer turn</div>
+	<button id="ok_button" onclick="ok_go()" style="display: none;">OK</button>
+</p>
+
+<div class="big_button">
+		<button id="computer_button" onclick="computerTurn()" style="display: none;">Computer Turn</button>
+</div>
+
+</section>
+
+<footer class="footer container">
+	<div class="big_button">
+		<button id="new_game" onclick="newGame()">New Game</button>
+	</div>
+</footer>
+
+<script src="js/nim2.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,227 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, input, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+/*
+  ========================================
+  Custom styles
+  ========================================
+*/
+
+body {
+	font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	padding-left: 30px;
+	font-size: 16px;
+	color: #333333;
+}
+
+h1 {
+  font-size: 96px;
+  font-weight: 300;
+  color: #333333;
+  margin-top: 20px;
+  padding: 40px 0px;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: 24px;
+  line-height: 44px;
+  margin-top: 40px;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: 300;
+  color: #333333;
+  margin-top: 20px;
+  padding: 40px 0px 20px 0px;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+ol {
+	list-style: upper-roman;
+  	padding: 10px 0px 10px 0px;
+}
+
+li {
+	line-height: 24px;
+}
+
+.center {
+	text-align: center;
+}
+
+/* * {
+	border: solid red 1px !important;
+}*/
+
+button {
+	display: block;
+    /*width: 200px;*/
+    box-sizing: border-box;
+    margin: 0.5rem auto;
+    padding: 0.75rem;
+    font-size: 1rem;
+    text-align: center;
+    text-transform: uppercase;
+    color: white;
+    border: none;
+    background: #49AA5A;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.25rem #2B823A;
+    outline: none;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    cursor: pointer;
+}
+
+div.big_button button {
+	width: 200px;
+}
+
+div.player_input input {
+	font-size: 16px;
+	width: 48px;
+    text-align: center;
+  	border-bottom: solid 2px #dcdcdc;
+}
+
+div.player_input input:focus {
+  	border-bottom: solid 2px #707070;
+}
+
+div.player_input select {
+	font-size: 16px;
+	width: 48px;
+    text-align: center;
+	border: none;
+	border: solid 1px #dcdcdc;
+}
+
+div.player_input select:focus {
+	outline: none;
+}
+
+div.player_input button {
+	display: inline !important;
+	margin-left: 15px;
+}
+
+input[type="number"] {
+	font-size: 64px;
+	font-weight: 400;
+	text-align: center;
+	width: 150px;
+	border: none;
+  	border-bottom: solid 2px #dcdcdc;
+  	padding-bottom: 10px;
+}
+
+input[type="number"]:focus{
+	outline: none;
+  	border-bottom: solid 2px #707070;
+}
+
+/* 
+	==================================
+	Layout
+	==================================
+*/
+
+.header {
+	height: 150px;
+}
+
+.container {
+	margin: 0 auto;
+	width: 960px;
+	padding: 0;
+}
+
+.footer {
+	padding-top: 50px;
+}
+
+
+/*
+  ========================================
+  Table
+  ========================================
+*/
+
+table {
+	margin-top: 20px;
+	margin-bottom: 30px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+td {
+	/*border: 1px solid #c6c7cc;*/
+	width: 150px;
+	height: 150px;
+	text-align: center;
+	vertical-align: middle;
+	padding: 10px;
+}
+
+td p {
+	color: #333333;
+	font-size: 64px;
+	font-weight: 400;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	/*height: 50px;*/
+}
+
+
