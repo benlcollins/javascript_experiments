@@ -1,0 +1,46 @@
+<html>
+	<head>
+		<title>First Angular App</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+		<script src="js/angular.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js"></script>
+		<script src="js/app.js"></script>
+		<style> .glyphicon-thumbs-up { cursor:pointer } </style>
+	</head>
+
+	<body ng-app="postApp" ng-controller="MainCtrl">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+		
+			<div class="page-header">
+				<h1>First Angular App</h1>
+			</div>
+
+			<div ng-repeat="post in posts | orderBy: '-upvote'">
+				<span class="glyphicon glyphicon-thumbs-up" ng-click="plusUpvote(post)"></span>
+				<span style="font-size:20px; margin-left:10px;">
+					{{ $index + 1 }}.
+					<a ng-show="post.link" href="{{ post.link }}">
+						{{ post.title }}
+					</a>
+					<span ng-hide="post.link">
+						{{ post.title }}
+					</span>
+						- {{ post.upvote }} upvotes 
+					</span>
+			</div>
+
+			<form ng-submit="addPost()" style="margin-top:30px;">
+				<div class="form-group">
+					Link: <input type="text" ng-model="link" class="form-control">
+				</div>
+				<div class="form-group">
+					Title: <input type="text" ng-model="title" class="form-control">
+				</div>
+				<button type="submit">Post</button>
+			</form>
+			</div>
+		</div>
+
+	</body>
+</html>
