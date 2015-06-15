@@ -3,7 +3,10 @@
 		<div ng-repeat="link in links | orderBy: '-upvotes'">
 			<span ng-click="upvoteLink(link)" class="glyphicon glyphicon-heart-empty"></span> {{ link.upvotes }}</span>
 			<span class="glyphicon glyphicon-link" style="margin-left: 12px;"></span>
-			<span style="font-size: 15px; margin-left: 6px;"><a href="{{ link.link }}" target="_blank">{{ link.link }}</a>
+			<span style="font-size: 15px; margin-left: 6px;"><a href="{{ link.link }}" target="_blank">{{ link.link }}</a></span>
+			<span style="font-size: 15px; margin-left: 6px;">
+				<a href="#/comments/{{$index}}">{{ link.comments.length }} comments</a>
+			</span>
 		<div>
 	</div>
 </div>

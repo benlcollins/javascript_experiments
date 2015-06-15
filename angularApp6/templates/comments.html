@@ -1,0 +1,27 @@
+<div class="row">
+	<div class="col-md-8">
+		<div ng-repeat="comment in link.comments">
+			<ul>
+				<li>{{ comment.body }} - {{ comment.author }} at {{ comment.timestamp | date: 'medium' }}</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<br>
+
+<div class="row">
+	<div class="col-md-8">
+		<form ng-submit="addComment()">
+			<div class="form-group">
+				Comment: <input type="text" ng-model="commentbody" class="form-control"></input>
+			</div>
+			<div class="form-group">
+				Author: <input type="text" ng-model="commentauthor" class="form-control"></input>
+			</div>
+			<div class="form-group">
+				<button type="submit" class="btn btn-primary">Add Comment</button>
+			</div>
+		</form>
+	</div>
+</div>
