@@ -1,0 +1,24 @@
+<div class="row">
+	<div class="col-md-8">
+		<div ng-repeat="link in links | orderBy: '-upvotes'">
+			<span ng-click="upvoteLink(link)" class="glyphicon glyphicon-heart-empty"></span> {{ link.upvotes }}</span>
+			<span class="glyphicon glyphicon-link" style="margin-left: 12px;"></span>
+			<span style="font-size: 15px; margin-left: 6px;"><a href="{{ link.link }}" target="_blank">{{ link.link }}</a>
+		<div>
+	</div>
+</div>
+
+<br>
+
+<div class="row">
+	<div class="col-md-8">
+		<form ng-submit="addLink()">
+			<div class="form-group">
+				<input type="text" ng-model="linktitle" class="form-control"></input>
+			</div>
+			<div class="form-group">
+				<button type="submit" class="btn btn-primary">Add Link</button>
+			</div>
+		</form>
+	</div>
+</div>
