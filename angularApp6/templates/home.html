@@ -1,14 +1,23 @@
 <div class="row">
-	<div class="col-md-8">
-		<div ng-repeat="link in links | orderBy: '-upvotes'">
-			<span ng-click="upvoteLink(link)" class="glyphicon glyphicon-heart-empty"></span> {{ link.upvotes }}</span>
-			<span class="glyphicon glyphicon-link" style="margin-left: 12px;"></span>
-			<span style="font-size: 15px; margin-left: 6px;"><a href="{{ link.link }}" target="_blank">{{ link.link }}</a></span>
-			<span style="font-size: 15px; margin-left: 6px;">
-				<a href="#/comments/{{$index}}">{{ link.comments.length }} comments</a>
-			</span>
-		<div>
-	</div>
+		<table class="table table-striped">
+			<tr style="font-size: 20px;">
+				<td>Link</td>
+				<td><div class="glyphicon glyphicon-resize-vertical" ng-click="sortLinks()" style="cursor: pointer;">Votes</div></td>
+				<td>Comments</td>
+			</tr>
+			<tr ng-repeat="link in links">
+				<td>
+					<span class="glyphicon glyphicon-link" style="margin-left: 12px;"></span>
+					<span style="font-size: 15px; margin-left: 5px;"><a href="{{ link.link }}" target="_blank">{{ link.link }}</a></span>
+				</td>
+				<td>
+					<span ng-click="upvoteLink(link)" class="glyphicon glyphicon-heart" style="cursor: pointer;"> {{ link.upvotes }}</span>
+				</td>
+				<td>
+					<a href="#/comments/{{$index}}"><span class="glyphicon glyphicon-comment" style="font-size: 15px;"> {{link.comments.length}} comments</a></span>
+				</td>
+			</tr>
+		</table>
 </div>
 
 <br>
@@ -17,7 +26,7 @@
 	<div class="col-md-8">
 		<form ng-submit="addLink()">
 			<div class="form-group">
-				<input type="text" ng-model="linktitle" class="form-control"></input>
+				<input type="url" ng-model="linktitle" class="form-control"></input>
 			</div>
 			<div class="form-group">
 				<button type="submit" class="btn btn-primary">Add Link</button>

@@ -1,5 +1,14 @@
 <div class="row">
 	<div class="col-md-8">
+		<span class="glyphicon glyphicon-link" style="margin-left: 12px;"></span>
+		<span style="font-size: 15px; margin-left: 6px;"><a href="{{ link.link }}" target="_blank">{{ link.link }}</a></span>
+	</div>
+</div>
+
+<br>
+
+<div class="row">
+	<div class="col-md-8">
 		<div ng-repeat="comment in link.comments">
 			<ul>
 				<li>{{ comment.body }} - {{ comment.author }} at {{ comment.timestamp | date: 'medium' }}</li>

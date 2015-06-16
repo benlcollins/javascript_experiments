@@ -1,5 +1,7 @@
+// initialize angular app called 'linkApp' and attach to variable called 'myApp'
 var myApp = angular.module('linkApp', ['ui.router']);
 
+// setup configuration routes for ui.router
 myApp.config([
 	'$stateProvider',
 	'$urlRouterProvider',
@@ -25,14 +27,16 @@ myApp.config([
 	}
 ]);
 
+// setup main controller
 myApp.controller('MainCtrl', [
 	'$scope',
 	'things',
 	function($scope,things){
-		// $scope.testVal = "Angular App Example";
 
+		// bind the $scope.links to the data array in the service
 		$scope.links = things.links;
 
+		// function for user to add new link
 		$scope.addLink = function(){
 			if (!$scope.linktitle || $scope.linktitle === '') { return; }
 			$scope.links.push({
@@ -43,21 +47,42 @@ myApp.controller('MainCtrl', [
 			$scope.linktitle = '';
 		};
 
+		// function to handle upvoting of a link
 		$scope.upvoteLink = function(link) {
 			link.upvotes += 1;
 		};
+
+		// function to handle sorting links by upvotes
+		$scope.sortLinks = function(){
+			$scope.links.sort(compare);
+		};
+
+		// compare function used inside of sorting function
+		var compare = function(a,b){
+			if (a.upvotes < b.upvotes) {
+					return 1;
+				}
+			if (a.upvotes > b.upvotes) {
+					return -1;
+				}
+					return 0;
+			};
 	}
 ]);
 
+// setup the comments controller
 myApp.controller('CommentsCtrl',[
 	'$scope',
 	'$stateParams',
 	'things',
 	function($scope,$stateParams,things){
-		// $scope.linkid = $stateParams.id;
+
+		// get the current link from the params
 		$scope.link = things.links[$stateParams.id];
 
+		// function to allow user to add comment
 		$scope.addComment = function(){
+			if (!$scope.commentbody || $scope.commentbody === '' || !$scope.commentauthor || $scope.commentauthor === '') {return;};
 			$scope.link.comments.push({
 				author: $scope.commentauthor,
 				body: $scope.commentbody,
@@ -69,15 +94,24 @@ myApp.controller('CommentsCtrl',[
 	}
 ]);
 
+// setup factory for data
 myApp.factory('things', [function(){
 	var service = {
  		links: [
  			// some seed data to see what's going on
 			{ link: "https://www.codeschool.com/courses/shaping-up-with-angular-js/",
-				upvotes: 3,
+				upvotes: 5,
 				comments: [
 					{author: 'Joe Bloggs', body: 'Great link!', timestamp: 1288323623006},
 					{author: 'Jenny Smith', body: 'Thanks for sharing!', timestamp: 1288323623006}
+				] 
+			},
+			{ link: "https://www.railstutorial.org/book",
+				upvotes: 3,
+				comments: [
+					{author: 'Joe Bloggs', body: 'Magnificent!', timestamp: 1288323623006},
+					{author: 'Jenny Smith', body: 'Thanks for sharing!', timestamp: 1288323623006},
+					{author: 'Anna Smith', body: 'Official docs are best', timestamp: 1288323623006}
 				] 
 			}
 		]
