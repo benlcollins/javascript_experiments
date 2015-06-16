@@ -1,5 +1,5 @@
 // initialize angular app called 'linkApp' and attach to variable called 'myApp'
-var myApp = angular.module('linkApp', ['ui.router']);
+var myApp = angular.module('linkApp', ['ui.router','ngAnimate']);
 
 // setup configuration routes for ui.router
 myApp.config([
@@ -53,8 +53,15 @@ myApp.controller('MainCtrl', [
 		};
 
 		// function to handle sorting links by upvotes
+		var counter = 0;
 		$scope.sortLinks = function(){
-			$scope.links.sort(compare);
+			if (counter % 2 == 0) {
+				$scope.links.sort(compare);
+			}
+			else {
+				$scope.links.sort(compare).reverse();
+			}
+			counter++;
 		};
 
 		// compare function used inside of sorting function
@@ -66,7 +73,19 @@ myApp.controller('MainCtrl', [
 					return -1;
 				}
 					return 0;
-			};
+		};
+
+		$scope.deleteLink = function(link) {
+			var index = $scope.links.indexOf(link);
+			var a = window.confirm("Are you sure you want to delete that link?");
+			if (a == true){
+				$scope.links.splice(index,1);	
+			}
+			else {
+				return;
+			}
+		}
+
 	}
 ]);
 

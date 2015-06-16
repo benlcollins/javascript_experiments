@@ -4,8 +4,9 @@
 				<td>Link</td>
 				<td><div class="glyphicon glyphicon-resize-vertical" ng-click="sortLinks()" style="cursor: pointer;">Votes</div></td>
 				<td>Comments</td>
+				<td></td>
 			</tr>
-			<tr ng-repeat="link in links">
+			<tr ng-repeat="link in links" ng-animate="repeat-animation">
 				<td>
 					<span class="glyphicon glyphicon-link" style="margin-left: 12px;"></span>
 					<span style="font-size: 15px; margin-left: 5px;"><a href="{{ link.link }}" target="_blank">{{ link.link }}</a></span>
@@ -15,6 +16,9 @@
 				</td>
 				<td>
 					<a href="#/comments/{{$index}}"><span class="glyphicon glyphicon-comment" style="font-size: 15px;"> {{link.comments.length}} comments</a></span>
+				</td>
+				<td>
+					<span ng-click="deleteLink(link)" class="glyphicon glyphicon-trash" style="cursor: pointer;"></span>
 				</td>
 			</tr>
 		</table>

@@ -1,0 +1,78 @@
+/* Have to set height explicity on ui-view 
+to prevent collapsing during animation*/
+.ui-view-container {
+  position: relative;
+  height: 65px;
+}
+
+[ui-view].ng-enter, [ui-view].ng-leave {
+  position: absolute;
+  left: 0;
+  right: 0;
+  -webkit-transition:all .5s ease-in-out;
+    -moz-transition:all .5s ease-in-out;
+    -o-transition:all .5s ease-in-out;
+    transition:all .5s ease-in-out;
+}
+
+[ui-view].ng-enter {
+  opacity: 0;
+}
+
+[ui-view].ng-enter-active {
+  opacity: 1;
+}
+
+[ui-view].ng-leave {
+  opacity: 1;
+}
+
+[ui-view].ng-leave-active {
+  opacity: 0;
+}
+
+/* css to overide the bootstrap setting */
+/*.well {
+  background-color: #fff !important;
+  border: 0px !important;
+  border-radius: 0px !important;
+  box-shadow: 0px !important;
+}*/
+
+/*  ng-repeat Animation  */
+[ng-repeat].ng-enter,
+[ng-repeat].ng-leave,
+[ng-repeat].ng-move {
+  -webkit-transition: all linear 1s;
+  -moz-transition: all linear 1s;
+  -o-transition: all linear 1s;
+  transition: all linear 1s;
+    
+  position:relative;
+  left:50px;
+}
+[ng-repeat].ng-enter {
+  opacity: 0;
+}
+[ng-repeat].ng-enter.ng-enter-active {
+  opacity: 1;
+}
+[ng-repeat].ng-leave {
+  opacity: 1;
+}
+[ng-repeat].ng-leave.ng-leave-active {
+  opacity: 0;
+}
+[ng-repeat].ng-move {
+  /*left:8px;*/
+  opacity: 0.5;
+}
+[ng-repeat].ng-move.ng-move-active {
+  /*left:0;*/
+  opacity: 1;
+}
+
+
+
+
+
