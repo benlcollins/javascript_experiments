@@ -1,3 +1,4 @@
+/* ui-view animation */
 /* Have to set height explicity on ui-view 
 to prevent collapsing during animation*/
 .ui-view-container {
@@ -72,7 +73,11 @@ to prevent collapsing during animation*/
   opacity: 1;
 }
 
-
+/* special property to fix ultra long url's in table overflowing */
+.the-table {
+    table-layout: fixed;
+    word-wrap: break-word;
+}
 
 
 
