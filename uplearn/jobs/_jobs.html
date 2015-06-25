@@ -1,0 +1,24 @@
+<div class="container">
+	<div class="row">
+		<h1>GitHub API <small>Want to connect to GitHub jobs eventually</small></h1>
+	</div>
+	<br>
+	<div class="form-horizontal">
+		<div class="form-group">
+			<div class="col-md-5">	
+				<input type="text" ng-model="username" class="form-control" placeholder="GitHub username">
+			</div>
+			<div class="col-md-2">
+				<button ng-click="getJobs()" class="btn btn-default">Call API</button>
+			</div>
+		</div>
+	</form>
+	<br><br>
+		<div ng-show="loaded">
+			<p>Name: {{ user.name }}</p>
+			<p>Followers: {{ user.followers }}</p>
+			<p>Following: {{ user.following }}</p>
+			<p>Repos: {{ user.public_repos }}</p>
+		</div>
+	</div>
+</div>

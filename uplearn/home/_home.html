@@ -1,0 +1,23 @@
+<div class="container">
+	<div class="row">
+		<h1>Educational links</h1>
+		<div ng-repeat="link in links">
+			<span class="glyphicon glyphicon-thumbs-up" ng-click="upvoteLink(link)">{{ link.upvotes }}</span>
+			{{ link.title }} : <a href="{{ link.url }}" target="_blank">{{ link.url }}</a>
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<form ng-submit="addLink()">
+			<div class="form-group">
+				<label>Title:</label>
+				<input type="text" ng-model="title" class="form-control" placeholder="Title">
+			</div>
+			<div class="form-group">
+				<label>Url:</label>
+				<input type="text" ng-model="url" class="form-control" placeholder="Url">
+			</div>
+			<button type="submit" class="btn btn-default">Post</button>
+		</form>
+	</div>
+</div>
