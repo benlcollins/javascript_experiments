@@ -3,7 +3,7 @@
 	<div class="row">
 		<h3>UpLearn is the best place to find and share online learning resources</h3>
 		<br>
-		<div ng-repeat="link in links">
+		<div ng-repeat="link in links | orderBy: '-upvotes'">
 
 			<!-- content inside ng-repeat loop -->
 			<span ng-click="hiddenDiv = !hiddenDiv" style="cursor: pointer">
@@ -11,6 +11,16 @@
 					<div class="panel-body">
 					
 						<h4>{{ link.title }}</h4>
+						<span ng-show="link.comments.length > 1">
+							<a href="/#/links/{{$index}}">{{ link.comments.length }} comments</a>
+						</span>
+						<span ng-show="link.comments.length == 1">
+							<a href="/#/links/{{$index}}">{{ link.comments.length }} comment</a>
+						</span>
+						<span ng-show="link.comments.length == 0">
+							No comments
+						</span>
+						<br>
 						<a href="{{ link.url }}" target="_blank">{{ link.url }}</a>
 
 						<!-- Upvote button -->
@@ -23,7 +33,8 @@
 						
 						<!-- section for link details -->
 						<div ng-show="hiddenDiv">
-								<div class="jumbotron">
+								<div class="jumbotron" ng-click="showLink($index)">
+									<!-- <a href="#/links/{{$index}}">details</a> -->
 									<h2><span class="glyphicon glyphicon-bookmark"></span> {{ link.title }}</h2>
 									<p>{{ link.body }}</p>
 									<br>

@@ -10,6 +10,11 @@ uplearnApp.config([
 				templateUrl: 'home/_home.html',
 				controller: 'mainCtrl'
 			})
+			.state('links',{
+				url: '/links/{id}',
+				templateUrl: 'pages/links.html',
+				controller: 'pagesCtrl'
+			})
 			.state('addlink',{
 				url: '/addlink',
 				templateUrl: 'home/_addlink.html',
@@ -32,6 +37,7 @@ uplearnApp.config([
 			});
 
 		$urlRouterProvider.otherwise('home');
+
 }]);
 
 

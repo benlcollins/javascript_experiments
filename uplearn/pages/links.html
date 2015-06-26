@@ -1,0 +1,24 @@
+<div class="container">
+
+	<div class="row">
+		<h3>{{ link.title }}</h3>
+		<p>{{ link.body }}</p>
+		<p><a href="{{ link.url }}" target="_blank">{{ link.url }}</a></p>
+	</div>
+
+	<div class="row">
+		<div ng-repeat="comment in link.comments">
+			<ul>
+				<li>{{ comment.body }}<br> by {{ comment.author }}</li>
+			</ul>
+		</div>
+		<form ng-submit="addComment()" style="margin-top: 30px;">
+			<div class="form-group">
+				<h5>Have your say:</h5>
+				<input type="text" class="form-control" ng-model="body" placeholder="Comment"></input>
+			</div>
+			<button type="submit" class="btn btn-default">Comment</button>
+		</form>
+	</div>
+
+</div>
