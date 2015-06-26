@@ -10,6 +10,11 @@ uplearnApp.config([
 				templateUrl: 'home/_home.html',
 				controller: 'mainCtrl'
 			})
+			.state('addlink',{
+				url: '/addlink',
+				templateUrl: 'home/_addlink.html',
+				controller: 'mainCtrl'
+			})
 			.state('about',{
 				url: '/about',
 				templateUrl: 'pages/_about.html',

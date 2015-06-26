@@ -1,0 +1,21 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+			<form ng-submit="addLink()">
+				<div class="form-group">
+					<label>Title:</label>
+					<input type="text" ng-model="title" class="form-control" placeholder="Title">
+				</div>
+				<div class="form-group">
+					<label>Url:</label>
+					<input type="text" ng-model="url" class="form-control" placeholder="Url">
+				</div>
+				<div class="form-group">
+					<label>Description:</label>
+					<textarea ng-model="body" class="form-control" placeholder="Title"></textarea>
+				</div>
+				<button type="submit" class="btn btn-default">Post</button>
+			</form>
+		</div>
+	</div>
+</div>

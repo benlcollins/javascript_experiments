@@ -1,23 +1,58 @@
 <div class="container">
+
 	<div class="row">
-		<h1>Educational links</h1>
+		<h3>UpLearn is the best place to find and share online learning resources</h3>
+		<br>
 		<div ng-repeat="link in links">
-			<span class="glyphicon glyphicon-thumbs-up" ng-click="upvoteLink(link)">{{ link.upvotes }}</span>
-			{{ link.title }} : <a href="{{ link.url }}" target="_blank">{{ link.url }}</a>
+
+			<!-- content inside ng-repeat loop -->
+			<span ng-click="showDetails(link,$index)" style="cursor: pointer"><div class="panel panel-default">
+				<div class="panel-body">
+					
+					{{ link.title }} : <a href="{{ link.url }}" target="_blank">{{ link.url }}</a>
+					<!-- <div class="pull-right">
+						<span class="glyphicon glyphicon-thumbs-up" ng-click="upvoteLink(link)"></span>&nbsp;&nbsp;<span class="badge">  {{ link.upvotes }}</span>
+					</div> -->
+					<div class="pull-right">
+						<button ng-click="upvoteLink(link)" class="btn btn-primary" type="button">
+							<span class="glyphicon glyphicon-thumbs-up"></span>
+							<!-- Upvote -->
+							<span class="badge">  {{ link.upvotes }}</span>
+						</button>
+					</div>
+					
+					<!-- section for link details -->
+					<div ng-if="link === displaylink">
+						<div class="jumbotron">
+							<h2><span class="glyphicon glyphicon-bookmark"></span> {{ detailedlink.title }}</h2>
+							<p>{{ detailedlink.body }}</p>
+							<br>
+							<p><a href="{{ detailedlink.url }}" target="_blank">{{ detailedlink.url }}</a></p>
+						</div>
+					</div>
+
+				</div>
+			</div></span>
+		
 		</div>
 	</div>
-	<br>
-	<div class="row">
-		<form ng-submit="addLink()">
-			<div class="form-group">
-				<label>Title:</label>
-				<input type="text" ng-model="title" class="form-control" placeholder="Title">
-			</div>
-			<div class="form-group">
-				<label>Url:</label>
-				<input type="text" ng-model="url" class="form-control" placeholder="Url">
-			</div>
-			<button type="submit" class="btn btn-default">Post</button>
-		</form>
-	</div>
 </div>
+
+	<!-- <div ng-show="displayState">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">{{ detailedlink.title }} <small>{{ detailedlink.upvotes }}</small></h3>
+			</div>
+			<div class="panel-body">
+				{{ detailedlink.body }}<br>
+				<a href="{{ detailedlink.url }}" target="_blank">{{ detailedlink.url }}</a>
+			</div>
+		</div>
+		<div class="jumbotron">
+			<h3>{{ detailedlink.title }} <small>{{ detailedlink.upvotes }}</small></h3>
+				<p>{{ detailedlink.body }}</p>
+				<br>
+				<p><a href="{{ detailedlink.url }}" target="_blank">{{ detailedlink.url }}</a></p>
+		</div>
+
+	</div> -->
