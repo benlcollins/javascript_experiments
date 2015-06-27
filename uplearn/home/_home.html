@@ -21,7 +21,10 @@
 							No comments
 						</span>
 						<br>
-						<a href="{{ link.url }}" target="_blank">{{ link.url }}</a>
+						<a href="{{ link.url }}" target="_blank">
+							<span class="glyphicon glyphicon-link"></span>
+							{{ link.url }}
+						</a>
 
 						<!-- Upvote button -->
 						<div class="pull-right">
@@ -38,7 +41,12 @@
 									<h2><span class="glyphicon glyphicon-bookmark"></span> {{ link.title }}</h2>
 									<p>{{ link.body }}</p>
 									<br>
-									<p><a href="{{ detailedlink.url }}" target="_blank">{{ link.url }}</a></p>
+									<p>
+										<a href="{{ detailedlink.url }}" target="_blank">
+											<span class="glyphicon glyphicon-link"></span>
+											{{ link.url }}
+										</a>
+									</p>
 								</div>
 							</div>
 

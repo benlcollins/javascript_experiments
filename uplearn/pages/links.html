@@ -3,22 +3,50 @@
 	<div class="row">
 		<h3>{{ link.title }}</h3>
 		<p>{{ link.body }}</p>
-		<p><a href="{{ link.url }}" target="_blank">{{ link.url }}</a></p>
+		<p>
+			<a href="{{ link.url }}" target="_blank">
+				<span class="glyphicon glyphicon-link"></span>
+				{{ link.url }}
+			</a>
+		</p>
 	</div>
 
 	<div class="row">
-		<div ng-repeat="comment in link.comments">
-			<ul>
-				<li>{{ comment.body }}<br> by {{ comment.author }}</li>
-			</ul>
-		</div>
-		<form ng-submit="addComment()" style="margin-top: 30px;">
-			<div class="form-group">
-				<h5>Have your say:</h5>
-				<input type="text" class="form-control" ng-model="body" placeholder="Comment"></input>
+
+
+
+			<div ng-repeat="comment in link.comments">
+				<ul class="list-group">
+					<li class="list-group-item">
+						<blockquote>
+							<p>{{ comment.body }}</p>
+							<footer>by {{ comment.author }}</footer>
+						</blockquote>
+						<!-- <div class="media-left"> -->
+							<!-- <p class="lead">{{ comment.body }}</p>
+							<span style="margin-left: 20px;">
+								<br> by {{ comment.author }}
+							</span> -->
+						<!-- </div> -->
+					</li>
+				</ul>
 			</div>
-			<button type="submit" class="btn btn-default">Comment</button>
-		</form>
+
+		<div class="col-sm-7 col-offset-2">
+			<form ng-submit="addComment()" style="margin-top: 30px;">
+				<div class="form-group">
+					<h5>Have your say:</h5>
+					<div class="input-group">
+						<input type="text" class="form-control" ng-model="body" placeholder="Comment">
+						<span class="input-group-btn">
+							<button type="submit" class="btn btn-default">Comment</button>
+						</span>
+					</div>
+				</div>
+				
+			</form>
+		
+		</div>
 	</div>
 
 </div>
